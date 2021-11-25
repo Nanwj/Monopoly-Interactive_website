@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Selection</title>
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="player-select">
+    <section id="ps-container">
+        <h1 id="player-select-title">Choose the number of player</h1>
+        <div id="players">
+            <div class="player">
+                <img class="selected" src="./images/selected.png" alt="selected symbol">
+                <a href="ChessBoard.html">
+                    <img class="player-num" src="./images/one-chess.png" alt="">
+                </a>
+                <p class="player-text">1 player</p>
+            </div>
+            <div class="player">
+                <img class="selected" src="./images/selected.png" alt="selected symbol">
+                <a href="ChessBoard.html">
+                    <img class="player-num" src="./images/two-chess-colored.png" alt="">
+                </a>
+                <p class="player-text">2 players</p>
+            </div>
+            <div class="player">
+                <img class="selected" src="./images/selected.png" alt="selected symbol">
+                <a href="ChessBoard.html">
+                <img class="player-num" src="./images/three-chess-colored.png" alt="">
+                </a>
+                <p class="player-text">3 players</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/showSelect.js"></script>
+</body>
+</html>

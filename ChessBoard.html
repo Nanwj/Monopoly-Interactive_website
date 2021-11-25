@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- light box to show image on the screen -->
+    <link href="./css/lightbox.css" rel="stylesheet" />
+    <script src="./js/lightbox-plus-jquery.js"></script>
+
+    <!-- map plug in -->
+    <link rel="stylesheet" href="./css/leaflet.css" />
+    <script src="./js/leaflet.js"></script>
+</head>
+
+<body class="game-part">
+    <!-- a loading animate showing while first time jump to this page -->
+    <div id="loading"></div>
+
+    <!-- player bar to show the information of each player -->
+    <section class="player-info"></section>
+
+    <!-- board section to show the chess and board -->
+    <section class="chess-board">
+        <a class="board-link" href="#">
+            <div class="board-box board-1">
+                <p>Start</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-2">
+                <p>2</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-3">
+                <p>3</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-4">
+                <p>4</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-5">
+                <p>5</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-6">
+                <p>6</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-7">
+                <p>7</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-8">
+                <p>8</p>
+            </div>
+        </a>
+        <!-- <a class="board-link" href="#">
+                <div class="board-box board-9">
+                    <p>9</p>
+                </div>
+            </a> -->
+        <a class="board-link" href="#">
+            <div class="board-box board-9">
+                <p>9</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-10">
+                <p>10</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-11">
+                <p>11</p>
+            </div>
+        </a>
+        <!-- <a class="board-link" href="#">
+                <div class="board-box board-13">
+                    <p>13</p>
+                </div>
+            </a> -->
+        <a class="board-link" href="#">
+            <div class="board-box board-12">
+                <p>12</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-13">
+                <p>13</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-14">
+                <p>14</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-15">
+                <p>15</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-16">
+                <p>16</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-17">
+                <p>17</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-18">
+                <p>18</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-19">
+                <p>19</p>
+            </div>
+        </a>
+        <!-- <a class="board-link" href="#">
+                <div class="board-box board-20">
+                    <p>20</p>
+                </div>
+            </a> -->
+        <a class="board-link" href="#">
+            <div class="board-box board-20">
+                <p>20</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-21">
+                <p>21</p>
+            </div>
+        </a>
+        <a class="board-link" href="#">
+            <div class="board-box board-22">
+                <p>22</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- prompt part to show the number of steps that player gonna move -->
+    <img class="domino" src="./images/whiteImg.png" alt="place to show dice">
+    
+    <!-- prompt part to show next player -->
+    <div id="prompt">
+        <p id="prompt-text">Current Player:</p>
+    </div>
+
+    <!-- a button to move chess -->
+    <div class="move-button">
+        <button class="go-button">Go</button>
+    </div>
+
+    <!-- link to game introduction -->
+    <section class="game-introduction">
+        <i class="uil uil-question-circle"></i>
+    </section>
+    <section id="game-intro-box">
+        <h1 class="reference-title">Game Introduction</h1>
+        <h3 class="game-intro-subtitle">Brisbane Monopoly</h3>
+            <p class="game-intro-item">A very charming game! Here you can learn about Brisbane's famous buildings, libraries, parks and museums. Learn more about the game with us now!</p>
+        <h3 class="game-intro-subtitle">Game Rules</h3>
+            <p class="game-intro-item">First, you can choose to play the game alone or with your friends (up to three).</p>
+            <p class="game-intro-item">All players explore Brisbane from the "Start" point. Players click the Go button (roll the dice) in turn, and when they get to the position corresponding to the points, they have to answer the questions to get the stars.</p>
+            <p class="game-intro-item">Brisbane City Hall: When the player answers the question correctly, he will get the property of this point, and can charge rent to the next player passing by this point.</p>
+            <p class="game-intro-item">Park: Each park has a different function. Some can add stars to the player, while others can confiscate them.</p>
+            <p class="game-intro-item">Library: When you answer a question correctly, you will get 5 stars, but you don't keep the library for yourself</p>
+            <p class="game-intro-item">Museum: When you answer a question correctly, you will get 8 stars, but you don't keep the museum for yourself</p>
+            <p class="game-intro-item">When all players have completed two circles, the player with the most stars wins.</p>
+        <h3 class="game-intro-subtitle">Game Database Interaction</h3>
+            <p class="game-intro-item">You can hover your mouse over a different grid during the game, and it will show you a photo of the building that corresponds to the grid, as well as its value and rent. Of course you can also click on it for more detailed information. (The building corresponding to the grid is random every time)</p>
+            <p class="game-intro-item">The progress of the game screen is displayed in the upper left corner</p>
+            <p class="game-intro-item">The bottom left corner of the game screen gives you a chance to start again!</p>
+            <p class="game-intro-item">The lower right corner of the game screen shows where all the buildings are located in Brisbane. (grey for library, museum, park, and Brisbane Hall which are not belong to player)</p>
+            <p class="game-intro-item">Click the "readMore" button to get more information about the building, which will help you find the right answer.</p>
+            <p class="game-intro-item">At the end, the winning player will see all the properties they own at the end!</p>
+            <p class="game-intro-item">Bring your friends, come and play!!</p>
+        <h2 class="game-intro-subtitle">Badger project team</h3>
+            <h5 class="game-intro-item">Zhihan Chen, Nan Yang, Chuan Yan, Fengyu Chen, Rong Zhao</p>    
+    </section>
+
+    <!-- left and right window to show some brief information of hall -->
+    <div class="info-window-left"></div>
+    <div class="info-window-right"></div>
+
+    <!-- to show the number of round that current player moved -->
+    <div class="round-num"></div>
+    <!-- a link to replay game again -->
+    <a href="./PlayerSelect.html" class="play-again">
+        <i class="uil uil-redo"></i> Start again
+    </a>
+
+    <!-- map part -->
+    <section id="map"></section>
+    <button id="map-button">
+        <p class="map-text">Map</p>
+        <i class="uil uil-map"></i>
+    </button>
+    <i class="uil uil-times-circle"></i>
+
+    <section id="map-lagend">
+        <img src="./images/markers.png" alt="legend of marker" class="map-legend-image">
+    </section>
+
+    <!-- a section to store information get from dataset
+    this part is not visible during the game -->
+    <section id="records"></section>
+
+    <!-- a section to store information get from dataset
+    this part is not visible during the game -->
+    <section id="libraries"></section>
+
+    <section id="prompt-information-box"></section>
+
+    <!-- question home page -->
+    <div id="question-home" class="question-home-page question-page-style">
+        <div id="title" class="login-title"><strong></strong> </div>
+        <div class="question-info-body">
+            <section class="question-picture">
+                <div class="hall-picture"></div>
+            </section>
+            <div class="question-text"></div>
+        </div>
+        <button id="read" class="readMore"><strong>Read More!</strong></button>
+        <div class="star">
+            <div class="star-font">Value:</div><img src="https://img.icons8.com/emoji/48/000000/star-emoji.png"/><div class="star-font hall-value"></div>
+            <div class="star-font">Rent:</div><img src="https://img.icons8.com/emoji/48/000000/star-emoji.png"/><div class="star-font hall-rent"></div>
+        </div>
+        <div class="marked-words"><strong>ANSWER QUESTION TO WIN!!</strong></div>
+        <button id="loginBtn" class="quesiton-button start"><strong>START!</strong></button>
+    </div>
+
+    <!-- question read more page -->
+    <div id="login-1" class="info-readMore question-page-style">
+        <div id="title2" class="login-title"><strong></strong> </div>
+        <div class="question-info-body">
+            <section class="question-picture">
+                <div class="hall-picture"></div>
+            </section>
+            <div class="info-question-text">
+                <!-- <div class="info-location"></div>
+                <div class="info-describe"></div> -->
+            </div>
+        </div>
+        <div class="star-icon">
+        </div>
+        <button id="back" class="readMore-back"><strong>Back!</strong></button>
+        <button id="loginBtn" class="quesiton-button start"><strong>START!</strong></button>
+    </div>
+
+    <!-- question page -->
+    <div id="login-1" class="question-page question-page-style">
+        <div class="login-title2"><strong>QUESTION</strong> </div>
+        <div class="question-info-body">
+            <section class="question-picture">
+                <div class="hall-picture"></div>
+            </section>
+            <div class="question-body">
+                <div class="question-title"></div>
+                <div class="question-option">
+                    <input class="radio" type="radio" name="choices" value=0><label class="op-label"></label><br>
+                    <input class="radio" type="radio" name="choices" value=1><label class="op-label"></label><br>
+                    <input class="radio" type="radio" name="choices" value=2><label class="op-label"></label><br>
+                    <input class="radio" type="radio" name="choices" value=3><label class="op-label"></label><br>
+                </div>
+            </div>
+        </div>
+        <button id="GO" class="quesiton-button"><strong>GO!</strong></button>
+    </div>
+
+    <!-- celebrate page -->
+    <div id="login-1" class="celebrate-page question-page-style">
+        <div class="login-title2"><strong>Congratulation!</strong> </div>
+        <div class="question-info-body">
+            <section class="question-picture">
+                <div class="hall-picture"></div>
+            </section>
+            <div class="question-prize">
+                <strong>That's great! The building is yours!</strong>
+            </div>
+        </div>
+        <button id="continue-success" class="quesiton-button"><strong>Continue!</strong></button>
+    </div>
+
+    <!-- fail page -->
+    <div id="login-1" class="fail-page question-page-style">
+        <div class="login-title2"><strong>OH NO!!!</strong> </div>
+        <div class="question-info-body">
+            <section class="question-picture">
+                <div class="hall-picture"></div>
+            </section>
+            <div class="fail-text">Sorry!!! </br> Your answer is wrong...</br></div>
+        </div>
+        <button id="continue-fail" class="quesiton-button"><strong>Continue!</strong></button>
+    </div>
+
+    <!-- background -->
+    <div id="bg" class="login-bg"></div>
+
+    <!-- a section to store information get from dataset
+    this part is not visible during the game -->
+    <section id="museums">
+        <div class="record">
+            <div class="museum-name">Boggo Road Gaol</div>
+            <div class="museum-location">Dutton Park</div>
+            <div class="museum-area">Brisbane Suburbs South</div>
+            <div class="museum-latitude">-27.4951</div>
+            <div class="museum-longitude">153.0289</div>
+            <div class="museum-type">Prison</div>
+            <div class="museum-summery">Operated throughout the 19th and 20th centuries and considered[by whom?] to be Australia's most notorious prison</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Boggo Road Gaol.jpg">
+            </div>
+        </div>
+
+        <div class="record">
+            <div class="museum-name">Brisbane Opal Museum</div>
+            <div class="museum-location">Windsor</div>
+            <div class="museum-area">Brisbane Suburbs North</div>
+            <div class="museum-latitude">-27.4367</div>
+            <div class="museum-longitude">153.0316</div>
+            <div class="museum-type">Natural history</div>
+            <div class="museum-summery">jewelry store with exhibits about opals and opal mining</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Brisbane Opal Museum.jpg">
+            </div>        
+        </div>
+
+        <div class="record">
+            <div class="museum-name">Brookfield District Museum</div>
+            <div class="museum-location">Brookfield</div>
+            <div class="museum-area">Brisbane Suburbs North</div>
+            <div class="museum-latitude">-27.4934</div>
+            <div class="museum-longitude">152.9121</div>
+            <div class="museum-type">Local history</div>
+            <div class="museum-summery">Housed in a former farmhouse and post office relocated from Pullenvale to the Brookfield Showgrounds. Exhibits include collections of local pioneers and the history of the Brookfield Show.</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Brookfield District Museum.jpg">
+            </div>        
+        </div>
+
+        <div class="record">
+            <div class="museum-name">Commissariat Store, Brisbane</div>
+            <div class="museum-location">Brisbane</div>
+            <div class="museum-area">Brisbane central</div>
+            <div class="museum-latitude">-27.4733</div>
+            <div class="museum-longitude">153.0243</div>
+            <div class="museum-type">History</div>
+            <div class="museum-summery">One of the oldest buildings in Brisbane, operated by the Royal Historical Society of Queensland</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Commissariat Store, Brisbane.jpg">
+            </div>        
+        </div>
+
+        <div class="record">
+            <div class="museum-name">Diamantina Health Care Museum</div>
+            <div class="museum-location">Woolloongabba</div>
+            <div class="museum-area">Brisbane Suburbs South</div>
+            <div class="museum-latitude">-27.5005</div>
+            <div class="museum-longitude">153.0332</div>
+            <div class="museum-type">Medical</div>
+            <div class="museum-summery">History of healthcare at Princess Alexandra Hospital</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Diamantina Health Care Museum.jpg">
+            </div>        
+        </div>
+
+        <div class="record">
+            <div class="museum-name">Fort Lytton Military Museum</div>
+            <div class="museum-location">Lytton</div>
+            <div class="museum-area">Brisbane Suburbs South</div>
+            <div class="museum-latitude">-27.412222</div>
+            <div class="museum-longitude">153.15</div>
+            <div class="museum-type">Military</div>
+            <div class="museum-summery">Located in Fort Lytton National Park, displays about the fort and the military history of Brisbane, exhibits of more general military significance, tours of the fort</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Fort Lytton Military Museum.jpg">
+            </div>        
+        </div>
+
+        <div class="record">
+            <div class="museum-name">Museum of Brisbane</div>
+            <div class="museum-location">Brisbane</div>
+            <div class="museum-area">Brisbane central</div>
+            <div class="museum-latitude">-27.4688</div>
+            <div class="museum-longitude">153.0236</div>
+            <div class="museum-type">History</div>
+            <div class="museum-summery">Brisbane's history from the 1820s and culture</div>
+            <div class="museum-image">
+                <img class="hall-img" src="./images/museumImage/Museum of Brisbane.jpg">
+            </div>        
+        </div>
+    </section>
+
+    <!-- winner section to show the winner -->
+    <section id="winner">
+        <div>
+            <h1 class="winner-title">WINNER!!!</h1>
+        </div>
+        <div class="winner-id">
+            Player 1
+        </div>
+        <div class="winner-star">
+            <i class="uil uil-star winner-star-icon"></i>
+            <p class="winner-stars">50</p>
+        </div>
+        <div class="winner-property">
+            <i class="uil uil-home winner-prop-icon"></i>
+            <p class="winner-properties">6</p>
+        </div>
+        <button class="see-result">SEE THE RESULT</button>
+    </section>
+
+    <!-- winner treasure to show the dataset during the game -->
+    <section id="winner-treasure">
+        <div class="winner-treasure-box">
+            <h1 class="winner-treasure-text">Winner Treasure</h1>
+            <a href="./PlayerSelect.html" class="winner-treasure-play-again">
+                <i class="uil uil-redo"></i> Start again
+            </a>
+        </div>
+        <div class="winner-treasures"></div>
+    </section>
+
+
+
+    <!-- some useful third part js library -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/game.js"></script>
+</body>
+
+</html>
